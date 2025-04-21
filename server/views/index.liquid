@@ -24,7 +24,7 @@
       <img src="{{ board.media.image_cover_url }}">
       <p>{{ board.name }}</p>
     </summary>
-    <div class="content">
+    <div class="content draggable" draggable="true">
       {% for pin in pinsPerBoard[board.id] %}
         <img src="{{ pin.media.images['400x300'].url }}" alt="">
       {% endfor %}
@@ -32,8 +32,8 @@
   </details>
 {% endfor %}
 
-<section class="journal">
-  <div></div>
+<section class="journal drop">
+  <div class="dropzone">dropzone</div>
 </section>
 
 {% endblock %}

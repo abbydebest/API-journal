@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.addEventListener('dragleave', handleLeave);
     
     // Set up draggable things (non-ios)
-    imgElement.src = './img/dragon-3.jpg';
-    document.querySelector('footer>p').appendChild(imgElement);
-    dragElement.textContent = 'Wheeeee';
-    dragElement.classList.add('wheeeee');
-    document.querySelector('footer>p').appendChild(dragElement);
+    // imgElement.src = './img/dragon-3.jpg';
+    // document.querySelector('footer>p').appendChild(imgElement);
+    // dragElement.textContent = 'Wheeeee';
+    // dragElement.classList.add('wheeeee');
+    // document.querySelector('footer>p').appendChild(dragElement);
   });
