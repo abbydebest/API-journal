@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist && mkdir dist",
     "start": "node server/server.js",
-    "predev": "npm run clean",
+    "predev": "npm run clean && npm run build",
     "dev": "npm-run-all --parallel dev:*",
     "dev:client": "vite --config vite.config.js",
     "dev:server": "node server/server.js --ext js,liquid",
