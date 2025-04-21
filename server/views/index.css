@@ -3,3 +3,23 @@
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
+
+summary::marker {
+  content: none;
+}
+
+.journal {
+  width: 45vw;
+  height: 90vh;
+  background-color: var(--paper-color);
+  border-radius: 0.5rem;
+}
+
+.journal::after {
+  content: "";
+  display: block;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+}

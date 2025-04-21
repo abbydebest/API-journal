@@ -1,3 +1,11 @@
+:root {
+  /* COLOURS */
+  --paper-color: #F1F1EF;
+}
+
+
+
+
 header {
   padding: 1rem;
 }

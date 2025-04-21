@@ -4,14 +4,36 @@
 
 <h1 class="h1">{{ title }}</h1>
 
-<ul class="grid">
-  {% for item in items %}
-    <li>
-      <a href="/plant/{{ item.id }}">
-        {% render 'server/components/card/card.liquid', item: item %}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+{% comment %} 🌶️🌶️🌶️ LANDING PAGE 🌶️🌶️🌶️ {% endcomment %}
+{% if not token.access_token %}
+  <a href="/login">
+    Log in!
+  </a>
+{% endif %}
+
+{% comment %} 🤠🤠🤠 HOMEPAGE 🤠🤠🤠 {% endcomment %}
+{% comment %} {% for pin in pinData.items %}
+    {% if pin.media.media_type == "image" %}
+      <img src="{{ pin.media.images['400x300'].url }}" alt="">
+  {% endif %}
+{% endfor %} {% endcomment %}
+
+{% for board in boardData.items %}
+  <details name="boards">
+    <summary>
+      <img src="{{ board.media.image_cover_url }}">
+      <p>{{ board.name }}</p>
+    </summary>
+    <div class="content">
+      {% for pin in pinsPerBoard[board.id] %}
+        <img src="{{ pin.media.images['400x300'].url }}" alt="">
+      {% endfor %}
+    </div>
+  </details>
+{% endfor %}
+
+<section class="journal">
+  <div></div>
+</section>
 
 {% endblock %}
