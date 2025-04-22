@@ -3,8 +3,8 @@
 /* ///////////////////// */
 
 @font-face {
-  font-family: ;
-  src: url();
+  font-family: Alinsa ;
+  src: url(/fonts/Alinsa.otf);
 }
 
 /* //////////////////////// */
@@ -20,6 +20,35 @@
 :root {
   /* COLOURS */
   --paper-color: #F1F1EF;
+  --deep-grey: #161616;
+
+  /* FONTS */
+  --alinsa: 'Alinsa', sans-serif, Arial, Helvetica, sans-serif;
+
+  /* FONT SIZES */
+  --logo: 2rem;
+  --h1:;
+  --h2:;
+}
+
+/* //////////////////// */
+/* 💗💗💗 HEADINGS 💗💗💗 */
+/* //////////////////// */
+
+/* //////////////// */
+/* 🤎🤎🤎 BODY 🤎🤎🤎 */
+/* //////////////// */
+
+body {
+  background-color: var(--deep-grey);
+}
+
+/* /////////////////// */
+/*  */
+/* ////////////////// */
+
+main {
+  padding: 0;
 }
 
 /* ////////////////// */
@@ -27,7 +56,30 @@
 /* ////////////////// */
 
 header {
+  width: 100vw;
+  height: auto;
+}
+
+nav {
+  width: 100%;
+  height: auto;
   padding: 1rem;
+  font-family: var(--alinsa);
+  font-size: var(--logo);
+  color: var(--paper-color);
+}
+
+ul {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+li {
+  width: auto;
+  height: auto;
 }
 
 /* ////////////////// */

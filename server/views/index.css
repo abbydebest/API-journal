@@ -2,10 +2,22 @@
 /* 🫶🏼🫶🏼🫶🏼 INDEX/HOME STYLING 🫶🏼🫶🏼🫶🏼 */
 /* ////////////////////////////// */
 
-.grid {
+/* .grid {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+} */
+
+/* /////////////////// */
+/* 🎞️🎞️🎞️ CONTENT 🎞️🎞️🎞️ */
+/* /////////////////// */
+
+.summary {
+  width: auto;
+  height: auto;
+  margin: 1rem;
+  /* background-color: ; */
+  position: absolute;
 }
 
 summary::marker {
@@ -18,6 +30,24 @@ summary::marker {
   height: 100vh;
   position: relative;
 }
+
+.binder > ul {
+  height: 95vh;
+  width: .8rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+}
+
+.binder li {
+  width: .8rem;
+  height: .8rem;
+  background-color: pink;
+  border-radius: 1rem;
+  /* position: absolute; */
+
+}
   
 .journal::before {
   content: "";
@@ -28,7 +58,7 @@ summary::marker {
     
   width: 45vw;
   height: 95vh;
-  border-radius: 1rem;
+  border-radius: .3rem;
   background-color: var(--paper-color);
 }
   
@@ -42,7 +72,7 @@ summary::marker {
     
   width: 45vw;
   height: 95vh;
-  border-radius: 1rem;
+  border-radius: .3rem;
     
   background-color: var(--paper-color);
 }
@@ -51,4 +81,9 @@ summary::marker {
   width: 100%;
   height: 100%;
   border: 2px solid blue;
+}
+
+.dropzone.over {
+  background-color: pink;
+  border: red;
 }
