@@ -2,11 +2,15 @@
 /* 🫶🏼🫶🏼🫶🏼 INDEX/HOME STYLING 🫶🏼🫶🏼🫶🏼 */
 /* ////////////////////////////// */
 
-/* .grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-} */
+/* //////////////////////// */
+/* ❤️‍🔥❤️‍🔥❤️‍🔥 CSS REMEDIES ❤️‍🔥❤️‍🔥❤️‍🔥 */
+/* //////////////////////// */
+
+:root {
+  /* JOURNAL SIZING */
+  --journal-width: 45vw;
+  --journal-height: 95vh;
+}
 
 /* /////////////////// */
 /* 🎞️🎞️🎞️ CONTENT 🎞️🎞️🎞️ */
@@ -24,6 +28,11 @@ summary::marker {
   content: none;
 }
 
+.image img {
+  cursor: pointer;
+  position: fixed;
+}
+
 .journal {
 /*   background-color: pink; */
   width: 100vw;
@@ -31,19 +40,28 @@ summary::marker {
   position: relative;
 }
 
-.binder > ul {
-  height: 95vh;
+.binder {
+  height: var(--journal-height);
   width: .8rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   position: absolute;
   top: 0;
+}
+
+.binder:first-of-type {
+  right: 56vw;
+}
+
+.binder:nth-of-type(2) {
+  left: 56vw;
 }
 
 .binder li {
   width: .8rem;
   height: .8rem;
-  background-color: pink;
+  background-color: var(--deep-grey);
   border-radius: 1rem;
   /* position: absolute; */
 
@@ -56,8 +74,8 @@ summary::marker {
   left: 1.5rem;
   z-index: -1;
     
-  width: 45vw;
-  height: 95vh;
+  width: var(--journal-width);
+  height: var(--journal-height);
   border-radius: .3rem;
   background-color: var(--paper-color);
 }
@@ -70,20 +88,49 @@ summary::marker {
   top: 0;
   z-index: -1;
     
-  width: 45vw;
-  height: 95vh;
+  width: var(--journal-width);
+  height: var(--journal-height);
   border-radius: .3rem;
-    
   background-color: var(--paper-color);
 }
+
+/* /////////////////////// */
+/* 🥯🥯🥯 DRAG & DROP 🥯🥯🥯 */
+/* /////////////////////// */
+
+/* [data-status="held"] {
   
-.dropzone {
-  width: 100%;
-  height: 100%;
-  border: 2px solid blue;
+  border: 2px solid hotpink;
+} */
+
+[data-status="dragend"] {
+  
+
 }
 
-.dropzone.over {
-  background-color: pink;
-  border: red;
+[data-status="hovered"] {
+  outline: 2px solid hotpink;
+  background-color: #ff69b479;
 }
+
+[data-status="dragleave"] {
+  border: none;
+  background-color: none;
+}
+
+.dropzone:first-of-type {
+  width: var(--journal-width);
+  height: var(--journal-height);
+  border-radius: .3rem;
+  position: absolute;
+  left: 1.5rem;
+}
+
+.dropzone:nth-of-type(2) {
+  width: var(--journal-width);
+  height: var(--journal-height);
+  border-radius: .3rem;
+  position: absolute;
+  right: 1.5rem;
+}
+

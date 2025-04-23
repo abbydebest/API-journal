@@ -158,20 +158,9 @@ app.get("/", async (req, res) => {
   // let pinData = [];
   let boardData = [];
   let pinsPerBoard = {};
+  let filteredBoards = [];
+  
   if (token.access_token) {
-    // fetch
-    // data =
-    // const pins = await fetch("https://api.pinterest.com/v5/pins", {
-    //   method: "GET",
-    //   headers: {
-    //     Authorization: "Bearer " + token.access_token,
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //   },
-    // });
-    // pinData = await pins.json();
-    // // console.log(pinData.items[0])
-
     const boards = await fetch("https://api.pinterest.com/v5/boards?page_size=32", {
       method: "GET",
       headers: {
@@ -186,7 +175,7 @@ app.get("/", async (req, res) => {
     
     console.log({items: boardData})
 
-    const filteredBoards = await boardData.items.filter((board) => {
+    filteredBoards = await boardData.items.filter((board) => {
       if (boardIds.includes(board.id)) {
         return board;
       }
@@ -217,8 +206,7 @@ app.get("/", async (req, res) => {
     renderTemplate("server/views/index.liquid", {
       title: "After party",
       token,
-      // pinData,
-      boardData,
+      boardData: filteredBoards,
       pinsPerBoard,
     })
   );

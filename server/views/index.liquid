@@ -18,29 +18,35 @@
   {% endif %}
 {% endfor %} {% endcomment %}
 
-{% for board in boardData.items %}
+{% for board in boardData %}
   <details name="boards">
     <summary>
       <img src="{{ board.media.image_cover_url }}">
       <p>{{ board.name }}</p>
     </summary>
-    <div class="content draggable" draggable="true">
+    <div>
       {% for pin in pinsPerBoard[board.id] %}
-        <img src="{{ pin.media.images['400x300'].url }}" alt="">
+        <div class="image box draggable" draggable="true">
+          <img src="{{ pin.media.images['400x300'].url }}" alt="">
+        </div>
       {% endfor %}
     </div>
   </details>
 {% endfor %}
 
 <section class="journal drop">
-  <div class="dropzone">DROPZONE</div>
-  <div class="binder">
-    <ul>
+  <div class="dropzone"></div>
+    <ul class="binder">
       <li></li>
       <li></li>
       <li></li>
     </ul>
-  </div>
+  <div class="dropzone"></div>
+    <ul class="binder">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
 </section>
 
 {% endblock %}
