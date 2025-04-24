@@ -29,10 +29,9 @@ const generateState = () => {
 app.use(logger());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  "/static",
-  sirv(process.env.NODE_ENV === "development" ? "client" : "dist")
-);
+app.use('/', sirv(process.env.NODE_ENV === 'development' ? 'client' : 'dist'));
+app.use('/public', sirv('public'));
+  
 
 // Route to initiate OAuth flow
 app.get("/login", (req, res) => {
