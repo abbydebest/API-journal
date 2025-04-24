@@ -4,12 +4,12 @@
 
 @font-face {
   font-family: Alinsa ;
-  src: url(/fonts/Alinsa.otf);
+  src: url(/public/fonts/Alinsa.otf);
 }
 
 @font-face {
   font-family: New Edge;
-  src: url(/fonts/NewEdgeTMTest-Medium.otf);
+  src: url(/public/fonts/NewEdgeTMTest-Medium.otf);
 }
 
 /* //////////////////////// */
