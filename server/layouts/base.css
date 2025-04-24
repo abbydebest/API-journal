@@ -7,6 +7,11 @@
   src: url(/fonts/Alinsa.otf);
 }
 
+@font-face {
+  font-family: New Edge;
+  src: url(/fonts/NewEdgeTMTest-Medium.otf);
+}
+
 /* //////////////////////// */
 /* 🪐🪐🪐 CSS REMEDIES 🪐🪐🪐 */
 /* //////////////////////// */
@@ -21,14 +26,23 @@
   /* COLOURS */
   --paper-color: #F1F1EF;
   --deep-grey: #161616;
+  --brown-red: #5E0921;
+  --brown-red-opacity: #5e09215f;
 
   /* FONTS */
   --alinsa: 'Alinsa', sans-serif, Arial, Helvetica, sans-serif;
+  --new-edge: 'New Edge', sans-serif, Arial, Helvetica, sans-serif;
 
   /* FONT SIZES */
   --logo: 2rem;
   --h1:;
   --h2:;
+}
+
+a {
+  color: var(--paper-color);
+  text-decoration: none;
+  font-family: var(--new-edge);
 }
 
 /* /////////////////////////// */
@@ -45,6 +59,7 @@ p {
 
 body {
   background-color: var(--deep-grey);
+  font-family: var(--new-edge);
 }
 
 /* /////////////////// */

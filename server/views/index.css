@@ -12,9 +12,29 @@
   --journal-height: 95vh;
 }
 
+/* //////////////////////// */
+/* 🔖🔖🔖 LANDING PAGE 🔖🔖🔖 */
+/* //////////////////////// */
+
+#login-button {
+  width: 2rem;
+  height: 3rem;
+  background-color: var(--brown-red);
+}
+
 /* /////////////////// */
 /* 🎞️🎞️🎞️ CONTENT 🎞️🎞️🎞️ */
 /* /////////////////// */
+
+details {
+  width: 9vw;
+  height: auto;
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  padding: 1rem;
+  background-color: var(--brown-red);
+  position: absolute;
+  z-index: 5;
+}
 
 .summary {
   width: auto;
@@ -109,8 +129,8 @@ summary::marker {
 }
 
 [data-status="hovered"] {
-  outline: 2px solid hotpink;
-  background-color: #ff69b479;
+  outline: 2px solid var(--brown-red);
+  background-color: var(--brown-red-opacity);
 }
 
 [data-status="dragleave"] {

@@ -36,13 +36,11 @@ const dragend = (e) => {
 
 // NOT THE BOX
 const dragover = (e) => {
-  //   check that e.target is the correct container, otherwise don't do anything
 
   e.preventDefault();
 };
 
 const dragenter = (e) => {
-  //   check that e.target is the correct container, otherwise don't do anything
   e.preventDefault();
   
   if (e.target && e.target.classList.contains("dropzone")) {

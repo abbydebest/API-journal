@@ -95,63 +95,63 @@ app.get("/callback", async (req, res) => {
 });
 
 // Example API endpoint to get user's boards
-app.get("/user-boards", async (req, res) => {
-  // In a real app, you'd get the token from session/db
-  const accessToken = req.query.token; // For testing only
+// app.get("/user-boards", async (req, res) => {
+//   // In a real app, you'd get the token from session/db
+//   const accessToken = req.query.token; // For testing only
 
-  if (!accessToken) {
-    return res.status(401).send("No access token provided");
-  }
+//   if (!accessToken) {
+//     return res.status(401).send("No access token provided");
+//   }
 
-  try {
-    const response = await fetch("https://api.pinterest.com/v5/boards", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+//   try {
+//     const response = await fetch("https://api.pinterest.com/v5/boards", {
+//       headers: {
+//         Authorization: `Bearer ${accessToken}`,
+//       },
+//     });
 
-    if (!response.ok) {
-      throw new Error(`API request failed: ${response.statusText}`);
-    }
+//     if (!response.ok) {
+//       throw new Error(`API request failed: ${response.statusText}`);
+//     }
 
-    const data = await response.json();
-    res.json(data);
-  } catch (error) {
-    console.error("API Error:", error);
-    res.status(500).send(`API error: ${error.message}`);
-  }
-});
+//     const data = await response.json();
+//     res.json(data);
+//   } catch (error) {
+//     console.error("API Error:", error);
+//     res.status(500).send(`API error: ${error.message}`);
+//   }
+// });
 
 // Example endpoint to get pins from a board
-app.get("/board-pins/:boardId", async (req, res) => {
-  const { boardId } = req.params;
-  const accessToken = req.query.token; // For testing only
+// app.get("/board-pins/:boardId", async (req, res) => {
+//   const { boardId } = req.params;
+//   const accessToken = req.query.token; // For testing only
 
-  if (!accessToken) {
-    return res.status(401).send("No access token provided");
-  }
+//   if (!accessToken) {
+//     return res.status(401).send("No access token provided");
+//   }
 
-  try {
-    const response = await fetch(
-      `https://api.pinterest.com/v5/boards/${boardId}/pins`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
+//   try {
+//     const response = await fetch(
+//       `https://api.pinterest.com/v5/boards/${boardId}/pins`,
+//       {
+//         headers: {
+//           Authorization: `Bearer ${accessToken}`,
+//         },
+//       }
+//     );
 
-    if (!response.ok) {
-      throw new Error(`API request failed: ${response.statusText}`);
-    }
+//     if (!response.ok) {
+//       throw new Error(`API request failed: ${response.statusText}`);
+//     }
 
-    const data = await response.json();
-    res.json(data);
-  } catch (error) {
-    console.error("API Error:", error);
-    res.status(500).send(`API error: ${error.message}`);
-  }
-});
+//     const data = await response.json();
+//     res.json(data);
+//   } catch (error) {
+//     console.error("API Error:", error);
+//     res.status(500).send(`API error: ${error.message}`);
+//   }
+// });
 
 // Home page
 app.get("/", async (req, res) => {
@@ -159,7 +159,7 @@ app.get("/", async (req, res) => {
   let boardData = [];
   let pinsPerBoard = {};
   let filteredBoards = [];
-  
+
   if (token.access_token) {
     const boards = await fetch("https://api.pinterest.com/v5/boards?page_size=32", {
       method: "GET",
@@ -171,7 +171,7 @@ app.get("/", async (req, res) => {
     });
     boardData = await boards.json()
 
-    const boardIds = ["315392848844176955", "315392848844279043", "315392848844176959", "315392848843935400"];
+    const boardIds = ["315392848844176955", "315392848844279043", "315392848844176959", "315392848843935400", "315392848844176963"];
     
     console.log({items: boardData})
 

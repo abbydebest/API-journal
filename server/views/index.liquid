@@ -6,47 +6,44 @@
 
 {% comment %} 🌶️🌶️🌶️ LANDING PAGE 🌶️🌶️🌶️ {% endcomment %}
 {% if not token.access_token %}
-  <a href="/login">
+  <a id="login-button" href="/login">
     Log in!
   </a>
+
+  {% else %}
+  {% comment %} 🤠🤠🤠 HOMEPAGE 🤠🤠🤠 {% endcomment %}
+  {% for board in boardData %}
+    <details name="boards">
+      <summary>
+        <img src="{{ board.media.image_cover_url }}">
+        <p>{{ board.name }}</p>
+      </summary>
+      <div>
+        {% for pin in pinsPerBoard[board.id] %}
+          <div class="image box draggable" draggable="true">
+            <img src="{{ pin.media.images['400x300'].url }}" alt="">
+          </div>
+        {% endfor %}
+      </div>
+    </details>
+  {% endfor %}
+
+  <section class="journal drop">
+    <div class="dropzone"></div>
+      <ul class="binder">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    <div class="dropzone"></div>
+      <ul class="binder">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+  </section>
 {% endif %}
 
-{% comment %} 🤠🤠🤠 HOMEPAGE 🤠🤠🤠 {% endcomment %}
-{% comment %} {% for pin in pinData.items %}
-    {% if pin.media.media_type == "image" %}
-      <img src="{{ pin.media.images['400x300'].url }}" alt="">
-  {% endif %}
-{% endfor %} {% endcomment %}
 
-{% for board in boardData %}
-  <details name="boards">
-    <summary>
-      <img src="{{ board.media.image_cover_url }}">
-      <p>{{ board.name }}</p>
-    </summary>
-    <div>
-      {% for pin in pinsPerBoard[board.id] %}
-        <div class="image box draggable" draggable="true">
-          <img src="{{ pin.media.images['400x300'].url }}" alt="">
-        </div>
-      {% endfor %}
-    </div>
-  </details>
-{% endfor %}
-
-<section class="journal drop">
-  <div class="dropzone"></div>
-    <ul class="binder">
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  <div class="dropzone"></div>
-    <ul class="binder">
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-</section>
 
 {% endblock %}
