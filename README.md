@@ -55,7 +55,7 @@ As a way to get the authentication of the API to work, I used postman to try and
 
 This also showed me how the data is structured and how I would have to write and use liquid to get data into my app. For example, when I get pins returned, they are returned in the array "items" and I get information such as the id, the id of the board it is in, the title, dominant color and multiple image sizes and the url I can use to add the image to my web app. 
 
-<img src="images/process/week1/screenshot-week1-postman.png" width="50%" height="auto" alt="Generating a token with postman and receiving a data response" style="align-text:center;">
+<img src="images/process/week1/screenshot-week1-postman.png" width="50%" height="auto" alt="Generating a token with postman and receiving a data response" style="align-self:center;">
 
 # 🪩 Week 2
 
