@@ -16,12 +16,14 @@ I came to the conclusion that using the Pinterest API would be best suitable for
 #### Web API
 The web API's that got my attention where the canvas API, color picker and view transitions. Not sure yet of what their capabilities are and what I can achieve with them, I decided to first start working with my content API and later implementing the web API for functionalities.
 
+
 #### Sources for API's
 🔗 SOURCE: https://rapidapi.com/hub
 
 🔗 SOURCE: https://publicapis.dev/
 
 🔗 SOURCE: https://developer.mozilla.org/en-US/docs/Web/API
+
 
 #### API's I have researched
 🔗 SOURCE: https://portal.api.hmgroup.com/
@@ -36,8 +38,10 @@ The web API's that got my attention where the canvas API, color picker and view 
 
 🔗 SOURCE: https://fakestoreapi.com/
 
+
 #### Pinterest API
 🔗 SOURCE: https://developers.pinterest.com/docs/api/v5/introduction
+
 
 ### Moodboard
 Something I always use to get a visual representation of what I want to make, the look & feel and to gather inspiration is a moodboard. My moodboard for this project!
@@ -61,7 +65,7 @@ This also showed me how the data is structured and how I would have to write and
 ### Access down
 #### Due to too many requests
 
-# Week 3
+# 🌶️ Week 3
 
 ### Authorization completion
 ### Drag and drop tutorial
