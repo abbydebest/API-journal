@@ -36,11 +36,21 @@ The web API's that got my attention where the canvas API, color picker and view 
 
 🔗 SOURCE: https://fakestoreapi.com/
 
+#### Pinterest API
+🔗 SOURCE: https://developers.pinterest.com/docs/api/v5/introduction
 
 ### Moodboard
+Something I always use to get a visual representation of what I want to make, the look & feel and to gather inspiration is a moodboard. My moodboard for this project!
+
 ### Postman
+As a way to get the authentication of the API to work, I used postman to try and achieve this, but mainly to see what data I get returned form the endpoints and to see what I can actually do with the API.
+
+This also showed me how the data is structured and how I would have to write and use liquid to get data into my app. For example, when I get pins returned, they are returned in the array "items" and I get information such as the id, the id of the board it is in, the title, dominant color and multiple image sizes and the url I can use to add the image to my web app. 
+
+<img src="images/process/week1/screenshot-week1-postman.png" width="50%" height="auto" align-self="center" alt="Generating a token with postman and receiving a data response">
 
 # 🪩 Week 2
+
 ### Authorization  
 #### With help of Cyd, ChatGPT and Claude
 
