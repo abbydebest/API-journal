@@ -181,6 +181,9 @@ app.get("/", async (req, res) => {
     })
     console.log({filteredBoards})
 
+    // async wacht totdat de data geladen is
+    // sync voert alles meteen uit
+    // for is een asynch functie en foreach is een sync functie
     for (let index = 0; index < filteredBoards.length; index++) {
       const board = filteredBoards[index];
       const pinData = await fetch(

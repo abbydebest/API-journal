@@ -25,23 +25,30 @@
 /* /////////////////// */
 /* 🎞️🎞️🎞️ CONTENT 🎞️🎞️🎞️ */
 /* /////////////////// */
+aside {
+  position: fixed;
+  z-index: 10;
+}
+
 
 details {
   width: 9vw;
-  height: auto;
+  height: 9vw;
   border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
   padding: 1rem;
   background-color: var(--brown-red);
-  position: absolute;
   z-index: 5;
 }
 
-.summary {
-  width: auto;
-  height: auto;
+summary {
+  width: 100%;
+  height: 100%;
   margin: 1rem;
   /* background-color: ; */
-  position: absolute;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 summary::marker {
@@ -50,7 +57,7 @@ summary::marker {
 
 .image img {
   cursor: pointer;
-  position: fixed;
+  /* position: fixed; */
 }
 
 .journal {

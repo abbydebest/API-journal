@@ -12,21 +12,24 @@
 
   {% else %}
   {% comment %} 🤠🤠🤠 HOMEPAGE 🤠🤠🤠 {% endcomment %}
-  {% for board in boardData %}
-    <details name="boards">
-      <summary>
-        <img src="{{ board.media.image_cover_url }}">
-        <p>{{ board.name }}</p>
-      </summary>
-      <div>
-        {% for pin in pinsPerBoard[board.id] %}
-          <div class="image box draggable" draggable="true">
-            <img src="{{ pin.media.images['400x300'].url }}" alt="">
-          </div>
-        {% endfor %}
-      </div>
-    </details>
-  {% endfor %}
+   <aside>
+     {% for board in boardData %}
+       <details name="boards">
+         <summary>
+           <img src="{{ board.media.image_cover_url }}">
+           <p>{{ board.name }}</p>
+         </summary>
+         <div>
+           {% for pin in pinsPerBoard[board.id] %}
+             <div class="image box draggable" draggable="true">
+               <img src="{{ pin.media.images['400x300'].url }}" alt="">
+             </div>
+           {% endfor %}
+         </div>
+       </details>
+     {% endfor %}
+
+   </aside>
 
   <section class="journal drop">
     <div class="dropzone"></div>
