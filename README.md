@@ -15,14 +15,20 @@ I came to the conclusion that using the Pinterest API would be best suitable for
 
 #### Web API
 The web API's that got my attention where the canvas API, color picker and view transitions. Not sure yet of what their capabilities are and what I can achieve with them, I decided to first start working with my content API and later implementing the web API for functionalities.
-&nbsp;
+
+
+
+
 #### Sources for API's
 🔗 SOURCE: https://rapidapi.com/hub
 
 🔗 SOURCE: https://publicapis.dev/
 
 🔗 SOURCE: https://developer.mozilla.org/en-US/docs/Web/API
-&nbsp;
+
+
+
+
 #### API's I have researched
 🔗 SOURCE: https://portal.api.hmgroup.com/
 
@@ -35,7 +41,10 @@ The web API's that got my attention where the canvas API, color picker and view 
 🔗 SOURCE: https://www.retailed.io/datasources/api/zara-product
 
 🔗 SOURCE: https://fakestoreapi.com/
-&nbsp;
+
+
+
+
 #### Pinterest API
 🔗 SOURCE: https://developers.pinterest.com/docs/api/v5/introduction
 
@@ -48,13 +57,9 @@ As a way to get the authentication of the API to work, I used postman to try and
 
 This also showed me how the data is structured and how I would have to write and use liquid to get data into my app. For example, when I get pins returned, they are returned in the array "items" and I get information such as the id, the id of the board it is in, the title, dominant color and multiple image sizes and the url I can use to add the image to my web app. 
 
-<img src="images/process/week1/screenshot-week1-postman.png" width="50%" height="auto" align-self="center" alt="Generating a token with postman and receiving a data response">
+<img src="images/process/week1/screenshot-week1-postman.png" width="50%" height="auto" alt="Generating a token with postman and receiving a data response">
 
 # 🪩 Week 2
-<details>
-    <summary>Accordion_name</summary>
-    <p>Accordion_content</p>
-    </details>
 
 ### Authorization  
 #### With help of Cyd, ChatGPT and Claude
