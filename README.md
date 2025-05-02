@@ -105,6 +105,8 @@ After my own failed attempt to get the auth working, I asked Cyd for help. I alr
 After trying out a lot of things(see the file server2.js), techniques and debugging(with ClaudeAI), when we finally got close to something that worked we asked ClaudeAI to give the last code to make it work.
 
 Which resulted into the following new and working auth:
+<br>
+
 🔗 SOURCE CLAUDE auth: https://claude.ai/share/8d019feb-5ea0-423e-a713-01c2d25097e1
 <br>
 
@@ -228,23 +230,66 @@ app.listen(3000, () =>
 ```
 <br>
 
-### Use first data with liquid in HTML & CSS
+### Adjusted concept
+While working on the authorisation of the API, I was able to see what sorts of data I get returned and I could start to imagine what I would actually do with it in therms of functionality and my concept of making some sort of web app in which users could immediately use their pins. Instead of a wishlist, that Iam not quite able to create with the Pinterest API, as expected. I decided to make a digital journal app in which users can drag and drop their pins from their boards and create spreads with them.
+
+With this in mind, I proceeded to work on fetching data relevant for this concept, starting with pins and boards.
 
 ### Fetch pins data with endpoint
+The first thing I needed, of course, were the pins. I fetched their data with the help of the Pinterest developers platform(see source).
+
+<img src="images/process/week2/screenshot-week2-fetch-pin-data.png" width="75%" height="auto" alt="Fetching the pin data">
+<br>
 
 🔗 SOURCE Pinterest developer: https://developers.pinterest.com/docs/api/v5/pins-get/
 
-### Fetch boards with set amount pins
-### Fetch boards by id
+### Use first data with liquid in HTML & CSS
+Having fetched the pin data, I could use their data into my web app. Because I want to create a drag and drop function I loaded in the pins image url to visually show the pins in my web app.
+
+<img src="images/process/week2/screenshot-week2-use-pin-data-index.liquid.png" width="75%" height="auto" alt="Using pins image in index.liquid">
+
+### Fetch boards
+Having loaded the pins data, I got all of my latest pins into the web app, all from different boards. I realised it would be better to first fetch the boards and then the pins inside of them. 
+
+At first I thought it didn't properly work, because not all of my boards were fetched, just a part of them. But I realised the default page load was 25 and I immediately changed it to a higher number with `?page_size=`.
+
+<img src="images/process/week2/screenshot-week2-fetch-all-boards.png" width="75%" height="auto" alt="Fetching all the boards">
+<br>
+
+🔗 SOURCE Pinterest developer: https://developers.pinterest.com/docs/api/v5/boards-list
+<br>
+
+#### Adjust data in liquid HTML
+To visually and interactively give the appearance of boards and their content/pins appearing I used the `<details>` element in HTML with the board cover being the `<summary>` and adding the board name as a heading. 
+
+<img src="images/process/week2/screenshot-week2-use-board-data-index-liquid.png" width="75%" height="auto" alt="Implementing board data in index.liquid">
+<br>
+
+### Fetch boards per id and their pins(with help of Cyd)
+I also realised, and saw, that fetching all the boards with all the pins inside, made the web app extremely slow and heavy. I decided to only fetch selected boards, suitable for the journal concept by using their id. 
+
+To do so I used CoPilot and asked Cyd to help, and she confirmed that this is a way to achieve this. I created a new array in which I put the board id's of the boards I wanted to show. And used .filter to filter through the boards and return a board if the id is in the array with boards I choose. I then looped through the board indexes with a for function, beacause this one is an async function, that waits for the data to be loaded before executing. And returned the board if the id is in the array boardIds. Plus the pins inside of this board.
+
+<img src="images/process/week2/screenshot-week2-boards-by-id-copilot.png" width="75%" height="auto" alt="Help of copilot to fetch boards by id">
+
+<img src="images/process/week2/screenshot-week2-fetch-boards-by-id.png" width="75%" height="auto" alt="Fetching and returning boards by id">
+<br>
+
+🔗 SOURCE Pinterest developer: https://developers.pinterest.com/docs/api/v5/boards-get
 
 ### Access down
 #### *Due to too many requests*
+Because I set the page load of the boards and the pins to a way to high number, I reached my max limit of requests and wasn't able to access my web app. A valuable lesson and something I immediately changed the next day.
 
 # 🌶️ Week 3
+
+### Journal section
+Due to my restricted access and further developing my web app, I continued with working on the journal part for the drag & drop.
+
 
 ### Drag and drop tutorial
 ### Drag and drop codepen with Cyd
 #### Const error
 #### Container --> dropzone
-#### Script niet goed gelinked
+#### Script not properly linked
 

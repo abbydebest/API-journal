@@ -1,0 +1,39 @@
+{% layout "server/layouts/base.liquid" %}
+
+{% block content %}
+
+<h1 class="h1">{{ title }}</h1>
+
+{% comment %} 🌶️🌶️🌶️ LANDING PAGE 🌶️🌶️🌶️ {% endcomment %}
+{% if not token.access_token %}
+  <a href="/login">
+    Log in!
+  </a>
+{% endif %}
+
+{% comment %} 🤠🤠🤠 HOMEPAGE 🤠🤠🤠 {% endcomment %}
+{% for pin in pinData.items %}
+    {% if pin.media.media_type == "image" %}
+      <img src="{{ pin.media.images['400x300'].url }}" alt="">
+  {% endif %}
+{% endfor %}
+
+{% for board in boardData.items %}
+  <details name="boards">
+    <summary>
+      <img src="{{ board.media.image_cover_url }}">
+      <p>{{ board.name }}</p>
+    </summary>
+    <div class="content">
+      {% for pin in pinsPerBoard[board.id] %}
+        <img src="{{ pin.media.images['400x300'].url }}" alt="">
+      {% endfor %}
+    </div>
+  </details>
+{% endfor %}
+
+<section class="journal">
+  <div></div>
+</section>
+
+{% endblock %}
