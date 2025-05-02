@@ -15,8 +15,7 @@ const app = new App();
 // Environment variables
 const appId = process.env.PINTEREST_APP_ID;
 const appSecret = process.env.PINTEREST_APP_SECRET;
-const redirectUri =
-  process.env.REDIRECT_URI || "http://localhost:3000/callback";
+const redirectUri = process.env.REDIRECT_URI || "http://localhost:3000/callback";
 const scope = "boards:read,pins:read"; // Adjust scope as needed
 let token = {};
 
@@ -93,64 +92,6 @@ app.get("/callback", async (req, res) => {
   }
 });
 
-// Example API endpoint to get user's boards
-// app.get("/user-boards", async (req, res) => {
-//   // In a real app, you'd get the token from session/db
-//   const accessToken = req.query.token; // For testing only
-
-//   if (!accessToken) {
-//     return res.status(401).send("No access token provided");
-//   }
-
-//   try {
-//     const response = await fetch("https://api.pinterest.com/v5/boards", {
-//       headers: {
-//         Authorization: `Bearer ${accessToken}`,
-//       },
-//     });
-
-//     if (!response.ok) {
-//       throw new Error(`API request failed: ${response.statusText}`);
-//     }
-
-//     const data = await response.json();
-//     res.json(data);
-//   } catch (error) {
-//     console.error("API Error:", error);
-//     res.status(500).send(`API error: ${error.message}`);
-//   }
-// });
-
-// Example endpoint to get pins from a board
-// app.get("/board-pins/:boardId", async (req, res) => {
-//   const { boardId } = req.params;
-//   const accessToken = req.query.token; // For testing only
-
-//   if (!accessToken) {
-//     return res.status(401).send("No access token provided");
-//   }
-
-//   try {
-//     const response = await fetch(
-//       `https://api.pinterest.com/v5/boards/${boardId}/pins`,
-//       {
-//         headers: {
-//           Authorization: `Bearer ${accessToken}`,
-//         },
-//       }
-//     );
-
-//     if (!response.ok) {
-//       throw new Error(`API request failed: ${response.statusText}`);
-//     }
-
-//     const data = await response.json();
-//     res.json(data);
-//   } catch (error) {
-//     console.error("API Error:", error);
-//     res.status(500).send(`API error: ${error.message}`);
-//   }
-// });
 
 // Home page
 app.get("/", async (req, res) => {

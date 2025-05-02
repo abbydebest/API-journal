@@ -153,6 +153,7 @@ app.get("/", async (req, res) => {
   }
 });
 
+// First addition of ChatGPT's code/help
 app.get("/auth", (req, res) => {
   const params = new URLSearchParams({
     response_type: "code",
@@ -207,24 +208,3 @@ const renderTemplate = (template, data) => {
   return engine.renderFileSync(template, templateData);
 };
 
-// app.get('/', async (req, res) => {
-//   // const pins = await fetch(''+apiKey);
-//   const pokemon = await fetch('https://pokeapi.co/api/v2/pokemon/')
-//   const pokemonData = await pokemon.json();
-
-//   console.log(pokemonData);
-
-//   return res.send(renderTemplate('server/views/index.liquid', { title: 'Pokemon', pokemon: pokemonData}));
-//   // return res.send(renderTemplate('server/views/index.liquid', { title: 'Digital journal', pins: pinsData }));
-// });
-
-// app.get('/pokemon/:name/', async (req, res) => {
-//   // const pins = await fetch('+apiKey');
-//   const pokemon = await fetch('https://pokeapi.co/api/v2/pokemon/'+name)
-//   const pokemonData = await pokemon.json();
-
-//   console.log(pokemonData);
-
-//   return res.send(renderTemplate('server/views/details.liquid', { title: 'Pokemon', pokemon: pokemonData}));
-//   // return res.send(renderTemplate('server/views/index.liquid', { title: 'Digital journal', pins: pinsData }));
-// });
