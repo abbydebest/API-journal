@@ -293,3 +293,7 @@ Due to my restricted access and further developing my web app, I continued with 
 #### Container --> dropzone
 #### Script not properly linked
 
+# 💥 Week 4
+
+### Move with mouse causing problems
+
