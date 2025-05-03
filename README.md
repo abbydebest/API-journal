@@ -292,8 +292,20 @@ Because I set the page load of the boards and the pins to a way to high number, 
 ### Journal section
 Due to my restricted access and further developing my web app, I continued with working on the journal part for the drag & drop. To create the visual appearance of a journal I used a `<section>` with the class .journal, styled to be divided into two pages with a `::before` and `::after` element. The section also functions as container for the dropzone inside. 
 
+<img src="images/process/week3/screenshot-week3-journal-section-drag&drop.png" width="75%" height="auto" alt="Journal section start on live web app">
+
+<img src="images/process/week3/screenshot-week3-journal-section-before-after.png" width="75%" height="auto" alt="Code of journal section with ::before and ::after state to create two pages">
+<br>
+
 ### Drag and drop tutorial
 Simultaneously, I started working on the drag & drop function into this journal section. Because I had never used native HTML drag & drop before, I decided to use a tutorial to help me start. Because this was quite an experiment, I started making this in codepen, later migrating it into my code files.
+
+To start the drag and drop, I defined the event listeners for the different parts of the function/action and define which elements/content is draggable and which element is the dropzone. By using `draggable="true"` and using classes.
+
+<img src="images/process/week3/screenshot-week3-journal-section-code-dropzone.png" width="75%" height="auto" alt="Code HTML drag & drop dropzone">
+
+img of index.js drag & drop tutorial code
+<br>
 
 🔗 SOURCE tutorial: 
 

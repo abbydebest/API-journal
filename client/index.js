@@ -2,71 +2,179 @@
 // 🫰🏼🫰🏼🫰🏼 DRAG AND DROP 🫰🏼🫰🏼🫰🏼
 // /////////////////////////
 
-import './index.css';
-let dragging = null;
+// import './index.css';
+// let dragging = null;
 
-console.log('HOOOI')
+// console.log('HOOOI')
 
-const initDragDrop = () => {
-  const boxes = document.querySelectorAll(".box");
-  boxes.forEach((box) => {
-    box.addEventListener("dragstart", dragstart);
-    box.addEventListener("dragend", dragend);
-  });
+// const initDragDrop = () => {
+//   const boxes = document.querySelectorAll(".box");
+//   boxes.forEach((box) => {
+//     box.addEventListener("dragstart", dragstart);
+//     box.addEventListener("dragend", dragend);
+//   });
 
-  const dropzones = document.querySelectorAll(".dropzone");
-  dropzones.forEach((dropzone) => {
-    dropzone.addEventListener("dragover", dragover);
-    dropzone.addEventListener("dragenter", dragenter);
-    dropzone.addEventListener("dragleave", dragleave);
-    dropzone.addEventListener("drop", drop);
-  });
-};
-// THE BOX
-const dragstart = (e) => {
-  console.log('init drag start')
-  e.target.dataset.status = "held";
-  dragging = e.target;
-  // setTimeout(() => (this.className.add("invisible"), 0);
-};
+//   const dropzones = document.querySelectorAll(".dropzone");
+//   dropzones.forEach((dropzone) => {
+//     dropzone.addEventListener("dragover", dragover);
+//     dropzone.addEventListener("dragenter", dragenter);
+//     dropzone.addEventListener("dragleave", dragleave);
+//     dropzone.addEventListener("drop", drop);
+//   });
+// };
+// // THE BOX
+// const dragstart = (e) => {
+//   console.log('init drag start')
+//   e.target.dataset.status = "held";
+//   dragging = e.target;
+//   // setTimeout(() => (this.className.add("invisible"), 0);
+// };
 
-const dragend = (e) => {
-  e.target.dataset.status = "dragend";
-};
+// const dragend = (e) => {
+//   e.target.dataset.status = "dragend";
+// };
 
-// NOT THE BOX
-const dragover = (e) => {
+// // NOT THE BOX
+// const dragover = (e) => {
 
-  e.preventDefault();
-};
+//   e.preventDefault();
+// };
 
-const dragenter = (e) => {
-  e.preventDefault();
+// const dragenter = (e) => {
+//   e.preventDefault();
   
-  if (e.target && e.target.classList.contains("dropzone")) {
-    e.target.dataset.status = "hovered";
-  }
-};
+//   if (e.target && e.target.classList.contains("dropzone")) {
+//     e.target.dataset.status = "hovered";
+//   }
+// };
 
-const dragleave = (e) => {
-  if (e.target && e.target.classList.contains("dropzone")) {
-    e.target.dataset.status = "dragleave";
-  }
-};
+// const dragleave = (e) => {
+//   if (e.target && e.target.classList.contains("dropzone")) {
+//     e.target.dataset.status = "dragleave";
+//   }
+// };
 
-const drop = (e) => {
-  //   check here the e.clientX and e.clientY
-//   If dragged item has class dropzone
-  if (e.target && e.target.classList.contains("dropzone")) {
-    const clonie = dragging.cloneNode(true);
-    //   check that e.target is the correct container, otherwise don't do anything
+// const drop = (e) => {
+//   //   check here the e.clientX and e.clientY
+// //   If dragged item has class dropzone
+//   if (e.target && e.target.classList.contains("dropzone")) {
+//     const clonie = dragging.cloneNode(true);
+//     //   check that e.target is the correct container, otherwise don't do anything
     
-    e.target.append(clonie);
-    dragging = null;
-  }
-};
+//     e.target.append(clonie);
+//     dragging = null;
+//   }
+// };
 
-initDragDrop();
+// initDragDrop();
+
+// //////////////////////
+// DRAG & DROP MY OWN WAY
+// //////////////////////
+
+document.addEventListener('DOMContentLoaded', () => {
+  
+  //required event listeners
+  document.body.addEventListener('dragstart', handleDragStart); //for draggable
+  document.body.addEventListener('drop', handleDrop); //for dropzone
+  document.body.addEventListener('dragover', handleOver); //for dropzone
+  document.body.addEventListener('dragend', dragEnd); //for draggable
+  
+  //optional but useful events
+  document.body.addEventListener('mousedown', handleCursorGrab);
+  document.body.addEventListener('dragenter', handleEnter);
+  document.body.addEventListener('dragleave', handleLeave);
+  
+  //set up draggable things (non-ios)
+});
+
+function handleDragStart(ev) {
+  // User started to drag a draggable item from the webpage
+  // obj = the element inside the draggable container
+  let obj = ev.target;
+
+  // If my object is not inside of something with the class 'draggable'(or doesn't have the class draggable)
+  // Then return = exit the function(because event listener is set on body)
+  if (!obj.closest('.draggable')) return;
+
+  // Because draggable item is a container for the actual content we want to drag
+  if(obj.classList.contains('draggable')){
+    obj = obj.firstElementChild;
+  }
+  console.log('DRAGSTART');
+
+  // Create content to drag and put in dataTransfer object ('*data type*', '*actual data*')
+  let imageURL = obj.src;
+  ev.dataTransfer.setData('text/plain', imageURL);
+
+  // dt.setData("text/uri-list", imageURL);
+  // dt.setData("text/plain", imageURL);
+  ev.dataTransfer.effectAllowed = "copy";
+
+}
+
+function handleDrop(ev) {
+  let dropzone = ev.target;
+  if (!dropzone.classList.contains('dropzone')) return;
+
+  // Prevent browser from default behaviour, explicitly do this instead
+  ev.preventDefault();
+  console.log('DROP', ev.dataTransfer);
+
+  // Get the data from the dataTransfer object with this ('data type')
+  let data = ev.dataTransfer.getData('text/plain');
+  
+  // And add it(data) to the textContent item
+  dropzone.textContent += data;
+
+  // Remove CSS class with the visual indication of dropping something(feedback)
+  // dropzone.classList.remove('over');
+}
+
+function handleOver(ev) {
+  //fires continually
+  let dropzone = ev.target;
+  if (!dropzone.classList.contains('dropzone')) return;
+  ev.preventDefault();
+
+  // dropzone.classList.add('over'); //can do this in handleEnter BUT WHY WOULD I CHOOSE A ONE TIME FIRING OPTION INSTEAD OF CONTINUOUSLY, PERFORMANCE?
+  console.log('dragover dropzone');
+}
+
+function dragEnd(ev) {
+  event.dataTransfer.dropEffect = "copy";
+}
+
+
+
+
+
+//optional but useful visual stuff...
+function handleCursorGrab(ev) {
+  let obj = ev.target;
+  if (!obj.closest('.draggable')) return;
+  obj.style.cursor = 'grabbing'; //close the hand
+}
+
+function handleEnter(ev) {
+  //fires once
+  let dropzone = ev.target;
+  if (!dropzone.classList.contains('dropzone')) return;
+  ev.preventDefault();
+
+  // Add class .over for styling the dropzone
+  dropzone.classList.add('over');
+
+  // console.log('dragenter dropzone')
+}
+
+function handleLeave(ev) {
+  let dropzone = ev.target;
+  if (!dropzone.classList.contains('dropzone')) return;
+  ev.preventDefault();
+  dropzone.classList.remove('over');
+  // console.log('dragleave dropzone');
+}
 
 // ///////////////////////////
 // 🎱🎱🎱 MOVE WITH MOUSE 🎱🎱🎱
