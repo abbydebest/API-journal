@@ -307,9 +307,13 @@ To start the drag and drop, I defined the event listeners for the different part
 img of index.js drag & drop tutorial code
 <br>
 
-🔗 SOURCE tutorial: 
+🔗 SOURCE tutorial: https://www.youtube.com/watch?v=Pje43sNdsaA
+🔗 SOURCE MDN: https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API
+
+After following through with most of the tutorial, the developer started using json and timestamps. A clever way to make the drag and drop work, but it felt devious and unnecessary. Which I tried to do easier and quicker by using the MDN source. Only this didn't work. I thought it had something to do with the data type or data I set or incorrect or no link with the JS file.
 
 ### Drag and drop codepen with Cyd
+
 I then changed it into two dropzones
 
 #### Script not properly linked

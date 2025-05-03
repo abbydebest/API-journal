@@ -4,7 +4,7 @@
 
 /*.layout and view styling */
 @import '../server/layouts/base.css';
-@import '../server/views/index.css';
+@import '../server/index.css';
 
 /* component styling */
 @import '../server/components/card/card.css';

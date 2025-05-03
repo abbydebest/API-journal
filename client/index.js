@@ -2,7 +2,7 @@
 // 🫰🏼🫰🏼🫰🏼 DRAG AND DROP 🫰🏼🫰🏼🫰🏼
 // /////////////////////////
 
-// import './index.css';
+import './index.css';
 // let dragging = null;
 
 // console.log('HOOOI')
@@ -128,7 +128,7 @@ function handleDrop(ev) {
   dropzone.textContent += data;
 
   // Remove CSS class with the visual indication of dropping something(feedback)
-  // dropzone.classList.remove('over');
+  dropzone.classList.remove('over');
 }
 
 function handleOver(ev) {
