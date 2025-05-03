@@ -262,6 +262,10 @@ At first I thought it didn't properly work, because not all of my boards were fe
 #### Adjust data in liquid HTML
 To visually and interactively give the appearance of boards and their content/pins appearing I used the `<details>` element in HTML with the board cover being the `<summary>` and adding the board name as a heading. 
 
+<img src="images/process/week2/screenshot-week2-live-fetched-boards.png" width="75%" height="auto" alt="Visual boards on live web app">
+
+<img src="images/process/week2/screenshot-week2-live-fetched-boards-pins.png" width="75%" height="auto" alt="Pins in board">
+
 <img src="images/process/week2/screenshot-week2-use-board-data-index-liquid.png" width="75%" height="auto" alt="Implementing board data in index.liquid">
 <br>
 
@@ -269,6 +273,8 @@ To visually and interactively give the appearance of boards and their content/pi
 I also realised, and saw, that fetching all the boards with all the pins inside, made the web app extremely slow and heavy. I decided to only fetch selected boards, suitable for the journal concept by using their id. 
 
 To do so I used CoPilot and asked Cyd to help, and she confirmed that this is a way to achieve this. I created a new array in which I put the board id's of the boards I wanted to show. And used .filter to filter through the boards and return a board if the id is in the array with boards I choose. I then looped through the board indexes with a for function, beacause this one is an async function, that waits for the data to be loaded before executing. And returned the board if the id is in the array boardIds. Plus the pins inside of this board.
+
+<img src="images/process/week2/screenshot-week2-live-fetched-boards-by-id.png" width="75%" height="auto" alt="Boards fetched by id on live web app">
 
 <img src="images/process/week2/screenshot-week2-boards-by-id-copilot.png" width="75%" height="auto" alt="Help of copilot to fetch boards by id">
 
@@ -284,14 +290,20 @@ Because I set the page load of the boards and the pins to a way to high number, 
 # 🌶️ Week 3
 
 ### Journal section
-Due to my restricted access and further developing my web app, I continued with working on the journal part for the drag & drop.
-
+Due to my restricted access and further developing my web app, I continued with working on the journal part for the drag & drop. To create the visual appearance of a journal I used a `<section>` with the class .journal, styled to be divided into two pages with a `::before` and `::after` element. The section also functions as container for the dropzone inside. 
 
 ### Drag and drop tutorial
+Simultaneously, I started working on the drag & drop function into this journal section. Because I had never used native HTML drag & drop before, I decided to use a tutorial to help me start. Because this was quite an experiment, I started making this in codepen, later migrating it into my code files.
+
+🔗 SOURCE tutorial: 
+
 ### Drag and drop codepen with Cyd
+I then changed it into two dropzones
+
+#### Script not properly linked
+
 #### Const error
 #### Container --> dropzone
-#### Script not properly linked
 
 # 💥 Week 4
 
