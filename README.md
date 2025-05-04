@@ -327,6 +327,9 @@ Because the code I had written didn't work, and because I thought it was due to 
 <img src="images/process/week3/screenshot-week3-drag&drop-cyd2.png" width="75%" height="auto" alt="Drag & drop code with Cyd & codePen2">
 <br>
 
+🔗 SOURCE: https://codepen.io/Sidstumple/pen/JooKbEm?editors=0110
+<br>
+
 #### Script not properly linked
 I then changed some of the journal section styling and made it into two separate dropzones. When after having done all this, and the drag & drop still not working, so even with the new code Cyd and I wrote, I started doubting if the JS file was properly linked again. After looking into it together, the file was indeed not linked properly, because I had previously worked and coded in an index.js file on the server side, when I was supposed to work in the index.js file on the client side. Oops, rookie mistake! But when I changed this everything immediately worked! This also made me realise, that my own code might have worked after all, but I couldn't see because the script wasn't properly linked.
 
@@ -346,11 +349,30 @@ After all the debugging, when all the base functionalities finally worked. I was
 <img src="images/process/week3/screenshot-week3-drag&drop-cyd-styling-data-status.png" width="75%" height="auto" alt="Styled dropzone code">
 <br>
 
+<!-- ////////////////// -->
+<!-- 💥💥💥 WEEK 4 💥💥💥 -->
+<!-- ////////////////// -->
+
 # 💥 Week 4
 
 ### Move with mouse
+Because I wanted to create an interactive drag & drop function, the next step to optimize it, is to make the content draggable around the whole dropzone, thus following the mouse. I followed another tutorial and added in some code to make this work.
+
+<img src="images/process/week4/screenshot-week4-move-with-mouse-code.png" width="75%" height="auto" alt="Move with mouse code">
+
+🔗 SOURCE: https://www.youtube.com/watch?v=ymDjvycjgUM
+<br>
 
 #### Causing problems
+Later, when I went back to my live server, it looked as though my drag & drop did not work anymore. Not knowing what was causing problems, I returned to Cyd for help, and the CSS styling I implemented for the move with mouse function was interfering with the drag & drop function, due to different positions(absolute and fixed).
 
+<img src="images/process/week4/screenshot-week4-position-problem.png" width="75%" height="auto" alt="Move with mouse code">
+<br>
+
+Cyd then backed up my idea to use an `<aside>` element and to use it as a container for the content and position that element instead of everything inside(that causes interference). When I changed this, the drag and drop worked again!
+
+<img src="images/process/week4/screenshot-week4-fixed-problems+aside.png" width="75%" height="auto" alt="Fixed problems with aside">
+
+<img src="images/process/week4/screenshot-week4-problem-fixed.png" width="75%" height="auto" alt="Fixed problems with aside on live server">
 
 ### Use 'old' and my own drag & drop
