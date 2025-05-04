@@ -304,24 +304,53 @@ To start the drag and drop, I defined the event listeners for the different part
 
 <img src="images/process/week3/screenshot-week3-journal-section-code-dropzone.png" width="75%" height="auto" alt="Code HTML drag & drop dropzone">
 
-img of index.js drag & drop tutorial code
+<img src="images/process/week3/screenshot-week3-drag&drop-js-start-event-listeners.png" width="75%" height="auto" alt="Code JS event listeners">
 <br>
 
 🔗 SOURCE tutorial: https://www.youtube.com/watch?v=Pje43sNdsaA
 🔗 SOURCE MDN: https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API
+<br>
 
-After following through with most of the tutorial, the developer started using json and timestamps. A clever way to make the drag and drop work, but it felt devious and unnecessary. Which I tried to do easier and quicker by using the MDN source. Only this didn't work. I thought it had something to do with the data type or data I set or incorrect or no link with the JS file.
+#### My drag & drop code after following tutorial(wo json & timestamps)
+After following through with most of the tutorial, the developer started using json and timestamps. A clever way to make the drag and drop work, but it felt devious and unnecessary. Which I tried to do easier and quicker by using the MDN source. Only this didn't work. I thought it had something to do with the data type or data I set or incorrect liking of the JS file.
+
+<img src="images/process/week3/screenshot-week3-drag&drop-tutorial .png" width="75%" height="auto" alt="Own drag & drop code wo json & timestamps">
+
+<img src="images/process/week3/screenshot-week3-drag&drop-tutorial 2.png" width="75%" height="auto" alt="Own drag & drop code wo json & timestamps part 2">
+<br>
 
 ### Drag and drop codepen with Cyd
+Because the code I had written didn't work, and because I thought it was due to having to use json and timestamps. I asked Cyd for help and to find a way to rewrite this without having to use this. We found a simple codePen example, that makes it able to drag & drop by defining and adding the `event.listeners` to the draggable elements and the dropzone. After that setting a `data.status` to the element with `event.listener` and checking if the `target` contains contains 'dropzone' to check if it is the actual dropzone. Then add the `dataset.status` of hovered and dragleave to easily style the visual feedback. Lastly, adding the actual image on the drop `event.listener` using `cloneNode(true)`. 
 
-I then changed it into two dropzones
+<img src="images/process/week3/screenshot-week3-drag&drop-cyd.png" width="75%" height="auto" alt="Drag & drop code with Cyd & codePen">
+
+<img src="images/process/week3/screenshot-week3-drag&drop-cyd2.png" width="75%" height="auto" alt="Drag & drop code with Cyd & codePen2">
+<br>
 
 #### Script not properly linked
+I then changed some of the journal section styling and made it into two separate dropzones. When after having done all this, and the drag & drop still not working, so even with the new code Cyd and I wrote, I started doubting if the JS file was properly linked again. After looking into it together, the file was indeed not linked properly, because I had previously worked and coded in an index.js file on the server side, when I was supposed to work in the index.js file on the client side. Oops, rookie mistake! But when I changed this everything immediately worked! This also made me realise, that my own code might have worked after all, but I couldn't see because the script wasn't properly linked.
+
+<img src="images/process/week3/screenshot-week3-drag&drop.png" width="75%" height="auto" alt="Drag & drop journal section into two separate dropzones and styled">
+
+<img src="images/process/week3/screenshot-week3-drag&drop-cyd-dropzone-html.png" width="75%" height="auto" alt="Drag & drop journal section into two separate dropzones and styled">
+<br>
 
 #### Const error
-#### Container --> dropzone
+After dragging and dropping a couple images and seeing everthing worked in the console. Const error messages started to pop up. This was due to Pinterest not giving access to manipulate the content you fetch from their API(eventhough these are my own pins Iam trying to manipulate). Luckily, this was a quick fix by putting the image into a `<div>` as container and putting the `draggable="true"` attribute on this instead of the image itself.(see the code screenshot above)
+
+### Working & stylable drag & drop
+After all the debugging, when all the base functionalities finally worked. I was able to style and format the `dataSet.status` states. Due to using this technique it was super easy to style the dropzones and add some visual feedback.
+
+<img src="images/process/week3/screenshot-week3-working-drag&drop-dropzone-styled.png" width="75%" height="auto" alt="Working drag & drop Cyd">
+
+<img src="images/process/week3/screenshot-week3-drag&drop-cyd-styling-data-status.png" width="75%" height="auto" alt="Styled dropzone code">
+<br>
 
 # 💥 Week 4
 
-### Move with mouse causing problems
+### Move with mouse
 
+#### Causing problems
+
+
+### Use 'old' and my own drag & drop

@@ -110,22 +110,28 @@ function handleDragStart(ev) {
   // dt.setData("text/uri-list", imageURL);
   // dt.setData("text/plain", imageURL);
   ev.dataTransfer.effectAllowed = "copy";
-
 }
 
 function handleDrop(ev) {
   let dropzone = ev.target;
   if (!dropzone.classList.contains('dropzone')) return;
 
-  // Prevent browser from default behaviour, explicitly do this instead
+  // Prevent browser from default behaviour(being able to drop anything from anywhere off the computer, like finder), explicitly do this instead
   ev.preventDefault();
   console.log('DROP', ev.dataTransfer);
 
   // Get the data from the dataTransfer object with this ('data type')
-  let data = ev.dataTransfer.getData('text/plain');
+  let imageURL = ev.dataTransfer.getData('text/plain');
+
+  // Create an image element and set its source to the dropped image URL
+  const img = document.createElement('img');
+  img.src = imageURL;
   
   // And add it(data) to the textContent item
-  dropzone.textContent += data;
+  // dropzone.textContent += data;
+
+  // Append the image to the dropzone
+  dropzone.appendChild(img);
 
   // Remove CSS class with the visual indication of dropping something(feedback)
   dropzone.classList.remove('over');
@@ -142,7 +148,7 @@ function handleOver(ev) {
 }
 
 function dragEnd(ev) {
-  event.dataTransfer.dropEffect = "copy";
+  ev.dataTransfer.dropEffect = "copy";
 }
 
 
