@@ -376,3 +376,16 @@ Cyd then backed up my idea to use an `<aside>` element and to use it as a contai
 <img src="images/process/week4/screenshot-week4-problem-fixed.png" width="75%" height="auto" alt="Fixed problems with aside on live server">
 
 ### Use 'old' and my own drag & drop
+The fact that my index.js file wasn't linked properly before, made me think that my first drag & drop code(before asking help) might work with some tweaks, after all. But because the code in the tutorial used json and timestamps, which I preferred not to use, I had to change this. I thought to change the data to the imageURL with the `dataSet`, but still wasn't sure how, so I asked ClaudeAI. Which showed my the small changes to make and also made me understand the whole process even better. 
+
+By indeed changing the data I send with the `dataSet` to the imageURL(on handleDragStart event), but of course also defining this data, by making the imageURL an object with the source. 
+
+Then getting the data from the `dataSet`, which is the image source, after which creating an image(on the handleDrop event) with this source.
+
+Lastly adding this image to the dropzone with `.append` and allowing the image to copy with `.dropEffect` on the dragEnd event.
+
+<img src="images/process/week4/screenshot-week4-own-drag&drop-code-working-changes.png" width="75%" height="auto" alt="My own working drag & drop code">
+
+🔗 SOURCE ClaudeAI: https://claude.ai/share/b4594830-4141-4866-ae43-2b9c1ce7575c
+
+### Mouse with mouse V2 functionality
