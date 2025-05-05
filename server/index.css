@@ -161,3 +161,7 @@ summary::marker {
   right: 1.5rem;
 }
 
+.dropzone img {
+  position: fixed;
+  cursor: pointer;
+}

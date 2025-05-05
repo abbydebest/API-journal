@@ -388,4 +388,7 @@ Lastly adding this image to the dropzone with `.append` and allowing the image t
 
 🔗 SOURCE ClaudeAI: https://claude.ai/share/b4594830-4141-4866-ae43-2b9c1ce7575c
 
-### Mouse with mouse V2 functionality
+### Move with mouse V2 functionality
+At first instance, I wanted to make the images draggable inside the dropzone, when this failed and made my think I broke my prototype, I first decided to focus on something else. 
+
+After working on making the new drag & drop function, I started to understand it much better and I comprehended better what to do to get the image to move on mouse. Which is/was, check the coordinates of the mouse and the image on the drop event and add a mousedown event. But I can just select/access this image, because it doesn't exist yet, therefore it first has to be dragged and dropped. Also, I have to add a class to the newly added image with `classList` to style it with CSS. 

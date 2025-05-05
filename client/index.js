@@ -81,6 +81,8 @@ function handleOver(ev) {
 
 function dragEnd(ev) {
   ev.dataTransfer.dropEffect = "copy";
+
+  
 }
 
 // ///////////////////////////////////////////////
@@ -117,35 +119,40 @@ function handleLeave(ev) {
 // 🎱🎱🎱 MOVE WITH MOUSE 🎱🎱🎱
 // ///////////////////////////
 
-// let newX = 0, newY = 0, startX = 0, startY = 0;
+let newX = 0, newY = 0, startX = 0, startY = 0;
 
 // const boxes = document.querySelectorAll(".box")
+let addedDragImg = dropzone.img
+
+addedDragImg .addEventListener('mousedown', mouseDown)
 
 // boxes.addEventListener('mousedown', mouseDown)
 
-// function mouseDown(e) {
-//     startX = e.clientX
-//     startY = e.clientY
+function mouseDown(e) {
+  // Start mouse position to where cursor currently is
+    startX = e.clientX
+    startY = e.clientY
 
-//     document.addEventListener('mousemove', mouseMove)
-//     document.addEventListener('mouseup', mouseUp)
-// }
+    document.addEventListener('mousemove', mouseMove)
+    document.addEventListener('mouseup', mouseUp)
+}
 
-// function mouseMove(e) {
-//     newX = startX - e.clientX
-//     newY = startY - e.clientY
+function mouseMove(e) {
+    // Mouse start position minus the current mouse position, calculates distance from mouse click to mouse at current moment
+    newX = startX - e.clientX
+    newY = startY - e.clientY
 
-//     startX = e.clientX
-//     startY = e.clientY
+    // Reset the start position to the current mouse position, as a new start point
+    startX = e.clientX
+    startY = e.clientY
 
-//     boxes.style.top = (boxes.offsetTop - newY) + 'px'
-//     boxes.style.left = (boxes.offsetTop - newX) + 'px'
+    boxes.style.top = (boxes.offsetTop - newY) + 'px'
+    boxes.style.left = (boxes.offsetLeft - newX) + 'px'
 
-//     console.log({newX, newY})
-//     console.log({startX, startY})
-// }
+    console.log({newX, newY})
+    console.log({startX, startY})
+}
 
-// function mouseUp(e) {
-//     document.removeEventListener('mousemove', mouseMove)
-
-// }
+function mouseUp(e) {
+    document.removeEventListener('mousemove', mouseMove)
+}
