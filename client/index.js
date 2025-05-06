@@ -5,19 +5,20 @@
 import './index.css';
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   //required event listeners
   document.body.addEventListener('dragstart', handleDragStart); //for draggable
   document.body.addEventListener('drop', handleDrop); //for dropzone
   document.body.addEventListener('dragover', handleOver); //for dropzone
   document.body.addEventListener('dragend', dragEnd); //for draggable
-  
+
   //optional but useful events
   document.body.addEventListener('mousedown', handleCursorGrab);
   document.body.addEventListener('dragenter', handleEnter);
   document.body.addEventListener('dragleave', handleLeave);
-  
-  //set up draggable things (non-ios)
+
+  // For internal movement of dropped images
+  document.body.addEventListener('mousedown', mouseDown);
 });
 
 function handleDragStart(ev) {
@@ -30,7 +31,7 @@ function handleDragStart(ev) {
   if (!obj.closest('.draggable')) return;
 
   // Because draggable item is a container for the actual content we want to drag
-  if(obj.classList.contains('draggable')){
+  if (obj.classList.contains('draggable')) {
     obj = obj.firstElementChild;
   }
   console.log('DRAGSTART');
@@ -58,9 +59,23 @@ function handleDrop(ev) {
   // Create an image element and set its source to the dropped image URL
   const img = document.createElement('img');
   img.src = imageURL;
-  
+
   // And add it(data) to the textContent item
   // dropzone.textContent += data;
+
+  // 🎱 MOVE WITH MOUSE
+
+  // Set the image to be draggable inside the dropzone
+  img.classList.add('image-inside');
+
+  // Position the image where it was dropped using absolute positioning
+  img.style.position = 'absolute';
+
+  // Calculate position relative to the dropzone
+  const dropzoneRect = dropzone.getBoundingClientRect();
+  img.style.top = `${ev.clientY - dropzoneRect.top}px`;
+  img.style.left = `${ev.clientX - dropzoneRect.left}px`;
+
 
   // Append the image to the dropzone
   dropzone.appendChild(img);
@@ -81,8 +96,6 @@ function handleOver(ev) {
 
 function dragEnd(ev) {
   ev.dataTransfer.dropEffect = "copy";
-
-  
 }
 
 // ///////////////////////////////////////////////
@@ -120,39 +133,60 @@ function handleLeave(ev) {
 // ///////////////////////////
 
 let newX = 0, newY = 0, startX = 0, startY = 0;
-
-// const boxes = document.querySelectorAll(".box")
-let addedDragImg = dropzone.img
-
-addedDragImg .addEventListener('mousedown', mouseDown)
-
-// boxes.addEventListener('mousedown', mouseDown)
+let isMoving = false;
+let currentMovingElement = null;
 
 function mouseDown(e) {
-  // Start mouse position to where cursor currently is
-    startX = e.clientX
-    startY = e.clientY
+  // Check if we clicked on a movable image inside the dropzone
+  const target = e.target;
 
-    document.addEventListener('mousemove', mouseMove)
-    document.addEventListener('mouseup', mouseUp)
+  // Only process if the clicked element is an image inside the dropzone with movable-inside class
+  if (!target.classList.contains('image-inside')) return;
+
+  e.preventDefault();
+  isMoving = true;
+  currentMovingElement = target;
+
+  // Start mouse position to where cursor currently is
+  startX = e.clientX
+  startY = e.clientY
+
+  document.addEventListener('mousemove', mouseMove)
+  document.addEventListener('mouseup', mouseUp)
+
+  console.log('Started moving element', {startX, startY});
 }
 
 function mouseMove(e) {
-    // Mouse start position minus the current mouse position, calculates distance from mouse click to mouse at current moment
-    newX = startX - e.clientX
-    newY = startY - e.clientY
+  // Only process if we're in moving mode
+  if (!isMoving || !currentMovingElement) return;
 
-    // Reset the start position to the current mouse position, as a new start point
-    startX = e.clientX
-    startY = e.clientY
+  // Mouse start position minus the current mouse position, calculates distance from mouse click to mouse at current moment
+  newX = e.clientX - startX;
+  newY = e.clientY - startY;
 
-    boxes.style.top = (boxes.offsetTop - newY) + 'px'
-    boxes.style.left = (boxes.offsetLeft - newX) + 'px'
+  // Get current position of the element (or default to 0 if not set)
+  const currentTop = parseInt(currentMovingElement.style.top) || 0;
+  const currentLeft = parseInt(currentMovingElement.style.left) || 0;
+  
+  // Update element position
+  currentMovingElement.style.top = `${currentTop + newY}px`;
+  currentMovingElement.style.left = `${currentLeft + newX}px`;
 
-    console.log({newX, newY})
-    console.log({startX, startY})
+  // Reset the start position to the current mouse position, as a new start point
+  startX = e.clientX
+  startY = e.clientY
+
+  console.log('Moving element', {newX, newY, currentTop, currentLeft});
 }
 
 function mouseUp(e) {
-    document.removeEventListener('mousemove', mouseMove)
+  // Clean up - reset state and remove listeners
+  isMoving = false;
+  currentMovingElement = null;
+
+  document.removeEventListener('mousemove', mouseMove)
+  document.removeEventListener('mouseup', mouseUp);
+
+  console.log('Stopped moving element');
 }

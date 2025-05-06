@@ -392,3 +392,16 @@ Lastly adding this image to the dropzone with `.append` and allowing the image t
 At first instance, I wanted to make the images draggable inside the dropzone, when this failed and made my think I broke my prototype, I first decided to focus on something else. 
 
 After working on making the new drag & drop function, I started to understand it much better and I comprehended better what to do to get the image to move on mouse. Which is/was, check the coordinates of the mouse and the image on the drop event and add a mousedown event. But I can just select/access this image, because it doesn't exist yet, therefore it first has to be dragged and dropped. Also, I have to add a class to the newly added image with `classList` to style it with CSS. 
+
+In a first attempt, I tried to change the variables to the added image after the drop(the one that doesn't exist yet), but quickly realised I wasn't sure how to and I asked ClaudeAI for help.
+
+#### Code of first own attempt to select and add code to the added image
+```
+// const boxes = document.querySelectorAll(".box")
+let addedDragImg = dropzone.img
+
+// boxes.addEventListener('mousedown', mouseDown)
+addedDragImg .addEventListener('mousedown', mouseDown)
+```
+
+🔗 SOURCE ClaudeAI: https://claude.ai/share/2a1d03a1-15c9-47df-b42d-b5a562205381

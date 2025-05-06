@@ -125,43 +125,56 @@ summary::marker {
 /* 🥯🥯🥯 DRAG & DROP 🥯🥯🥯 */
 /* /////////////////////// */
 
-/* [data-status="held"] {
-  
-  border: 2px solid hotpink;
-} */
-
-[data-status="dragend"] {
-  
-
+/* Draggable items from aside */
+.draggable {
+  cursor: grab;
+  user-select: none;
 }
 
-[data-status="hovered"] {
+.draggable:active {
+  cursor: grabbing;
+}
+
+.draggable img {
+  display: block;
+}
+
+.dropzone {
+  position: relative;
+  width: var(--journal-width);
+  height: var(--journal-height);
+  border-radius: .3rem;
+  position: absolute;
+  transition: all 0.3s ease;
+
+  &:first-of-type {
+    left: 1.5rem;
+  }
+
+  &:nth-of-type(2) {
+    right: 1.5rem;
+  }
+}
+
+.dropzone.over {
   outline: 2px solid var(--brown-red);
   background-color: var(--brown-red-opacity);
-}
 
-[data-status="dragleave"] {
-  border: none;
-  background-color: none;
-}
-
-.dropzone:first-of-type {
-  width: var(--journal-width);
-  height: var(--journal-height);
-  border-radius: .3rem;
-  position: absolute;
-  left: 1.5rem;
-}
-
-.dropzone:nth-of-type(2) {
-  width: var(--journal-width);
-  height: var(--journal-height);
-  border-radius: .3rem;
-  position: absolute;
-  right: 1.5rem;
-}
-
-.dropzone img {
   position: fixed;
   cursor: pointer;
+}
+
+/* Images inside dropzone that can be moved */
+.dropzone .image-inside {
+  position: absolute; /* Use absolute instead of fixed */
+  cursor: move;
+  /* max-width: 150px; */
+  z-index: 10;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Visual feedback when moving elements */
+.dropzone .image-inside:active {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
 }
