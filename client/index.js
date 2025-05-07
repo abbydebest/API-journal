@@ -76,7 +76,6 @@ function handleDrop(ev) {
   img.style.top = `${ev.clientY - dropzoneRect.top}px`;
   img.style.left = `${ev.clientX - dropzoneRect.left}px`;
 
-
   // Append the image to the dropzone
   dropzone.appendChild(img);
 

@@ -404,4 +404,33 @@ let addedDragImg = dropzone.img
 addedDragImg .addEventListener('mousedown', mouseDown)
 ```
 
+#### Move with mouse tweaks ClaudeAI
+With some tweaks and extra code, the move with mouse worked! First, a class is added to the image on the handleDrop event to be able to style it and a position absolute is added. Then the position of the dropzone and mouse position relative to this dropzone are calculated and the image is positioned at these coordinates.
+
+```
+// 🎱 MOVE WITH MOUSE
+
+// Set the image to be draggable inside the dropzone
+img.classList.add('image-inside');
+
+// Position the image where it was dropped using absolute positioning
+img.style.position = 'absolute';
+
+// Calculate position relative to the dropzone
+const dropzoneRect = dropzone.getBoundingClientRect();
+img.style.top = `${ev.clientY - dropzoneRect.top}px`;
+img.style.left = `${ev.clientX - dropzoneRect.left}px`;
+```
+
+When the mouseDown event is triggered(by the user clicking) it is checked if the click is on a movable img in the dropzone(JS RS 139-143). isMoving and currentMovingElement are set to true and target to indicate the drag operation is started and to store the which item is dragged. 
+
+Then on mouseMove it is checked if something is being moved, and if not, the function is exited. If it is, the current position is used and updated. Lastly, the states are reset and the listeners removed on mouseUp.
+
+<img src="images/process/week4/screenshot-week4-move-with-mouse-code-working-claudeai.png" width="75%" height="auto" alt="Working move with mouse code">
+
 🔗 SOURCE ClaudeAI: https://claude.ai/share/2a1d03a1-15c9-47df-b42d-b5a562205381
+🔗 SOURCE MDN: https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
+
+### CSS styling
+Having worked on mainly the functionality and getting everything to work, one of the last steps was to make the prototype visually appealing and usable by CSS styling and formatting.
+

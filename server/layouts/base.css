@@ -28,6 +28,7 @@
   --deep-grey: #161616;
   --brown-red: #5E0921;
   --brown-red-opacity: #5e09215f;
+  --shadow-grey: #1616169b;
 
   /* FONTS */
   --alinsa: 'Alinsa', sans-serif, Arial, Helvetica, sans-serif;
@@ -41,15 +42,30 @@
 
 a {
   color: var(--paper-color);
-  text-decoration: none;
   font-family: var(--new-edge);
+  text-decoration: none;
+  text-align: center;
 }
 
 /* /////////////////////////// */
 /* 💗💗💗 TEXT FORMATTING 💗💗💗 */
 /* ////////////////////////// */
 
+h1 {
+  font-family: var(--alinsa);
+  font-size: 2rem;
+  color: var(--paper-color);
+}
+
+h2 {
+  font-family: var(--alinsa);
+  font-size: 1.5rem;
+  padding: 0 0 0 1rem;
+  color: var(--paper-color);
+}
+
 p {
+  font-family: var(--new-edge);
   color: var(--paper-color);
 }
 
@@ -59,15 +75,20 @@ p {
 
 body {
   background-color: var(--deep-grey);
-  font-family: var(--new-edge);
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: grid;
+  position: relative;
 }
 
-/* /////////////////// */
-/*  */
-/* ////////////////// */
+/* //////////////// */
+/* 🎀🎀🎀 MAIN 🎀🎀🎀 */
+/* //////////////// */
 
 main {
-  padding: 0;
+  width: 100vw;
+  height: auto;
+  justify-items: center;
 }
 
 /* ////////////////// */
@@ -107,4 +128,13 @@ li {
 
 footer {
   padding: 1rem;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  p {
+    color: #464646cd;
+    font-size: .9rem;
+  }
 }

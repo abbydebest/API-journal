@@ -2,24 +2,29 @@
 
 {% block content %}
 
-<h1 class="h1">{{ title }}</h1>
-
 {% comment %} 🌶️🌶️🌶️ LANDING PAGE 🌶️🌶️🌶️ {% endcomment %}
 {% if not token.access_token %}
+  <p class="jump-shake">Hurry up and start creating with your pins. Let's go afterparty!</p>
   <a id="login-button" href="/login">
-    Log in!
+    <p>Start creating!</p>
   </a>
 
   {% else %}
   {% comment %} 🤠🤠🤠 HOMEPAGE 🤠🤠🤠 {% endcomment %}
-   <aside>
-     {% for board in boardData %}
+  <aside>
+    <div class="container-shape">
+      <div class="aside-shape"></div>
+    </div>
+    
+    <section class="boards-container">
+      <h2>Your pins</h2>
+      {% for board in boardData %}
        <details name="boards">
          <summary>
-           <img src="{{ board.media.image_cover_url }}">
-           <p>{{ board.name }}</p>
+            <img src="{{ board.media.image_cover_url }}">
+            <p>{{ board.name }}</p>
          </summary>
-         <div>
+         <div class="pins">
            {% for pin in pinsPerBoard[board.id] %}
              <div class="image box draggable" draggable="true">
                <img src="{{ pin.media.images['400x300'].url }}" alt="">
@@ -28,7 +33,7 @@
          </div>
        </details>
      {% endfor %}
-
+    </section>
    </aside>
 
   <section class="journal drop">
@@ -38,6 +43,7 @@
         <li></li>
         <li></li>
       </ul>
+      {% comment %} <img class="binder-ring" src="/images/binder-ring.png" alt="binder ring"> {% endcomment %}
     <div class="dropzone"></div>
       <ul class="binder">
         <li></li>
