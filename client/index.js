@@ -189,3 +189,24 @@ function mouseUp(e) {
 
   console.log('Stopped moving element');
 }
+
+const shareData = {
+  title: "{{ title }}",
+  text: "Hurry up and start creating with your pins. Let's go afterparty!",
+  url: "http://localhost:3000/",
+};
+
+const btn = document.getElementById("shareBtn");
+const resultPara = document.querySelector(".result");
+
+// Share must be triggered by "user activation"
+btn.addEventListener("click", async () => {
+  try {
+    await navigator.share(shareData);
+    resultPara.textContent = "Shared successfully";
+  } catch (err) {
+    resultPara.textContent = `Error: ${err}`;
+  }
+});
+
+// SOURCE: https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API
